@@ -30,5 +30,5 @@ async (event) => {
         uid: event.uid, 
         displayName: event.displayName || ''
     };
-    return db.doc(`users/user.uid`).set(user);
+    return db.doc(`users/${user.uid}`).set(user);
 })
