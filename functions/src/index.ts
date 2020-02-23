@@ -24,6 +24,11 @@ interface User {
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
 //
-export const helloWorld = functions.https.onRequest((request, response) => {
-  response.send("ese cochinosadfdf");
- })
+export const userCreate = functions.auth.user().onCreate(
+async (event) => {
+    const user: User = {
+        uid: event.uid, 
+        displayName: event.displayName || ''
+    };
+    return db.doc(`users/user.uid`).set(user);
+})
