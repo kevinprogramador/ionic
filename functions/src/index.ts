@@ -25,7 +25,7 @@ interface User {
 // // https://firebase.google.com/docs/functions/typescript
 //
 export const userCreate = functions.auth.user().onCreate(
-async (event) => {
+async (event : any ) => {
     const user: User = {
         uid: event.uid, 
         displayName: event.displayName || ''
